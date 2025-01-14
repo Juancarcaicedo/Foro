@@ -6,20 +6,20 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Entity
-@Table
+@Table(name = "Respuestas")
 @Data
 public class Respuesta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String contenido;
+    private String mensaje;
     private LocalDate fechaRespuesta;
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-    @ManyToOne
-    @JoinColumn(name = "topico_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "topico_id")
     private Topico topico;
 }
 
