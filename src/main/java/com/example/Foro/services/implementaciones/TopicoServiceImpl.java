@@ -56,7 +56,7 @@ public class TopicoServiceImpl implements TopicoService {
                 .orElseThrow(() -> new RuntimeException("Tópico no encontrado"));
         topico.setTitulo(topicoRequestDTO.getTitulo());
         topico.setDescripcion(topicoRequestDTO.getDescripcion());
-        topico.setCurso(Curso.valueOf(topicoRequestDTO.getCurso())); // Asumiendo que Curso es un Enum
+        topico.setCurso(Curso.valueOf(topicoRequestDTO.getCurso()));
 
         if (topicoRequestDTO.getUsuarioId() != null) {
             Usuario usuario = usuarioRepository.findById(topicoRequestDTO.getUsuarioId())
